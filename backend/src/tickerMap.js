@@ -1,0 +1,44 @@
+const TICKER_MAP = {
+  // Financials
+  "stock-1": { particulars: "HDFC Bank", exchangeCode: "HDFCBANK", yahooTicker: "HDFCBANK.NS", googleTicker: "HDFCBANK:NSE" },
+  "stock-2": { particulars: "Bajaj Finance", exchangeCode: "BAJFINANCE", yahooTicker: "BAJFINANCE.NS", googleTicker: "BAJFINANCE:NSE" },
+  "stock-3": { particulars: "ICICI Bank", exchangeCode: "532174", yahooTicker: "ICICIBANK.NS", googleTicker: "ICICIBANK:NSE" },
+  "stock-4": { particulars: "Bajaj Housing", exchangeCode: "544252", yahooTicker: "BAJAJHFL.NS", googleTicker: "BAJAJHFL:NSE" },
+  "stock-5": { particulars: "Savani Financials", exchangeCode: "511577", yahooTicker: "511577.BO", googleTicker: "511577:BOM" },
+  
+  // Tech Sector
+  "stock-6": { particulars: "Affle India", exchangeCode: "AFFLE", yahooTicker: "AFFLE.NS", googleTicker: "AFFLE:NSE" },
+  "stock-7": { particulars: "LTI Mindtree", exchangeCode: "LTIM", yahooTicker: "LTIM.NS", googleTicker: "LTIM:NSE" },
+  "stock-8": { particulars: "KPIT Tech", exchangeCode: "542651", yahooTicker: "KPITTECH.NS", googleTicker: "KPITTECH:NSE" },
+  "stock-9": { particulars: "Tata Tech", exchangeCode: "544028", yahooTicker: "TATATECH.NS", googleTicker: "TATATECH:NSE" },
+  "stock-10": { particulars: "BLS E-Services", exchangeCode: "544107", yahooTicker: "BLSE.NS", googleTicker: "BLSE:NSE" },
+  "stock-11": { particulars: "Tanla", exchangeCode: "532790", yahooTicker: "TANLA.NS", googleTicker: "TANLA:NSE" },
+
+  // Consumer Sector
+  "stock-12": { particulars: "Dmart", exchangeCode: "DMART", yahooTicker: "DMART.NS", googleTicker: "DMART:NSE" },
+  "stock-13": { particulars: "Tata Consumer", exchangeCode: "532540", yahooTicker: "TATACONSUM.NS", googleTicker: "TATACONSUM:NSE" },
+  "stock-14": { particulars: "Pidilite", exchangeCode: "500331", yahooTicker: "PIDILITIND.NS", googleTicker: "PIDILITIND:NSE" },
+
+  // Power Sector
+  "stock-15": { particulars: "Tata Power", exchangeCode: "500400", yahooTicker: "TATAPOWER.NS", googleTicker: "TATAPOWER:NSE" },
+  "stock-16": { particulars: "KPI Green", exchangeCode: "542323", yahooTicker: "KPIGREEN.NS", googleTicker: "KPIGREEN:NSE" },
+  "stock-17": { particulars: "Suzlon", exchangeCode: "532667", yahooTicker: "SUZLON.NS", googleTicker: "SUZLON:NSE" },
+  "stock-18": { particulars: "Gensol", exchangeCode: "542851", yahooTicker: "GENSOL.NS", googleTicker: "GENSOL:NSE" },
+
+  // Pipe Sector
+  "stock-19": { particulars: "Hariom Pipes", exchangeCode: "543517", yahooTicker: "HARIOMPIPE.NS", googleTicker: "HARIOMPIPE:NSE" },
+  "stock-20": { particulars: "Astral", exchangeCode: "ASTRAL", yahooTicker: "ASTRAL.NS", googleTicker: "ASTRAL:NSE" },
+  "stock-21": { particulars: "Polycab", exchangeCode: "542652", yahooTicker: "POLYCAB.NS", googleTicker: "POLYCAB:NSE" },
+
+  // Others
+  "stock-22": { particulars: "Clean Science", exchangeCode: "543318", yahooTicker: "CLEAN.NS", googleTicker: "CLEAN:NSE" },
+  "stock-23": { particulars: "Deepak Nitrite", exchangeCode: "506401", yahooTicker: "DEEPAKNTR.NS", googleTicker: "DEEPAKNTR:NSE" },
+  "stock-24": { particulars: "Fine Organic", exchangeCode: "541557", yahooTicker: "FINEORG.NS", googleTicker: "FINEORG:NSE" },
+  "stock-25": { particulars: "Gravita", exchangeCode: "533282", yahooTicker: "GRAVITA.NS", googleTicker: "GRAVITA:NSE" },
+  "stock-26": { particulars: "SBI Life", exchangeCode: "540719", yahooTicker: "SBILIFE.NS", googleTicker: "SBILIFE:NSE" },
+  "stock-27": { particulars: "Infy", exchangeCode: "500209", yahooTicker: "INFY.NS", googleTicker: "INFY:NSE" },
+  "stock-28": { particulars: "Happiest Minds", exchangeCode: "543237", yahooTicker: "HAPPSTMNDS.NS", googleTicker: "HAPPSTMNDS:NSE" },
+  "stock-29": { particulars: "Easemytrip", exchangeCode: "543272", yahooTicker: "EASEMYTRIP.NS", googleTicker: "EASEMYTRIP:NSE" }
+};
+
+module.exports = { TICKER_MAP };
