@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { 
   TrendingUp, 
   TrendingDown, 
   DollarSign, 
   PieChart, 
-  Layers, 
   RefreshCw,
   Clock,
   CheckCircle2
@@ -39,8 +39,14 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20">
-              <Layers className="w-6 h-6 text-white" />
+            <div className="w-11 h-11 rounded-xl border border-slate-200 bg-white p-1.5 flex items-center justify-center shadow-sm">
+              <Image 
+                src="/favicon.ico" 
+                alt="Octa Byte Logo" 
+                width={32} 
+                height={32} 
+                className="w-full h-full object-contain rounded-md"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
