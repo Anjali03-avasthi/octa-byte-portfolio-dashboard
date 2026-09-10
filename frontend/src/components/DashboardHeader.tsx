@@ -35,43 +35,41 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
 
   return (
     <header className="space-y-6">
-      {/* Top Banner / Nav with Crisp Light Theme */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6">
-        <div>
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl border border-slate-200 bg-white p-1.5 flex items-center justify-center shadow-sm">
-              <Image 
-                src="/favicon.ico" 
-                alt="Octa Byte Logo" 
-                width={32} 
-                height={32} 
-                className="w-full h-full object-contain rounded-md"
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
-                  Octa Byte Portfolio Terminal
-                </h1>
-                <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Live Sync
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5 font-medium">
-                Dynamic Equities Performance • Yahoo Finance (CMP) & Google Finance (P/E, EPS)
-              </p>
+      {/* Top Banner / Nav with Responsive Layout */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5">
+        <div className="flex items-start sm:items-center gap-3">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-slate-200 bg-white p-1.5 flex items-center justify-center shadow-xs flex-shrink-0 mt-0.5 sm:mt-0">
+            <Image 
+              src="/favicon.ico" 
+              alt="Octa Byte Logo" 
+              width={32} 
+              height={32} 
+              className="w-full h-full object-contain rounded-md"
+            />
+          </div>
+          <div>
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              Octa Byte Portfolio Terminal
+            </h1>
+            <div className="flex flex-wrap items-center gap-2 mt-1">
+              <span className="text-xs text-slate-500 font-medium">
+                Dynamic Equities Performance • Yahoo (CMP) & Google (P/E, EPS)
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-semibold rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Live Feed
+              </span>
             </div>
           </div>
         </div>
 
         {/* Live Controls & Polling Timer */}
-        <div className="flex items-center gap-3 self-start md:self-auto">
-          {/* Polling Timer indicator */}
-          <div className="flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-2 rounded-lg text-xs font-mono shadow-sm">
-            <Clock className="w-4 h-4 text-slate-400" />
-            <span className="text-slate-500">Sync in:</span>
-            <span className="text-indigo-600 font-bold w-6 text-center">
+        <div className="flex flex-wrap items-center gap-2 self-start md:self-auto pt-1 md:pt-0">
+          {/* Polling Timer indicator with dynamic auto width */}
+          <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-mono shadow-2xs">
+            <Clock className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+            <span className="text-slate-500 text-[11px] sm:text-xs">Sync in:</span>
+            <span className="text-indigo-600 font-bold text-[11px] sm:text-xs min-w-[20px]">
               {autoRefreshEnabled ? `${secondsUntilNextRefresh}s` : 'PAUSED'}
             </span>
           </div>
@@ -79,21 +77,21 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
           {/* Toggle Auto Sync */}
           <button
             onClick={onToggleAutoRefresh}
-            className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all shadow-sm ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all shadow-2xs ${
               autoRefreshEnabled 
                 ? 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300' 
                 : 'bg-amber-50 text-amber-700 border-amber-300 hover:bg-amber-100'
             }`}
             title="Toggle 15-second automatic background polling"
           >
-            {autoRefreshEnabled ? 'Pause 15s Sync' : 'Resume Sync'}
+            {autoRefreshEnabled ? 'Pause Sync' : 'Resume Sync'}
           </button>
 
           {/* Force Refresh Button */}
           <button
             onClick={onManualRefresh}
             disabled={isRefreshing}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-all active:scale-95"
+            className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-2xs transition-all active:scale-95"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
             <span>{isRefreshing ? 'Syncing...' : 'Sync Now'}</span>
