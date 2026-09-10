@@ -53,9 +53,9 @@ export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
           </div>
         </div>
 
-        <div className="h-64 w-full">
+        <div className="h-64 w-full outline-none focus:outline-none">
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
+            <PieChart style={{ outline: 'none' }} tabIndex={-1}>
               <Pie
                 data={allocationData}
                 cx="50%"
@@ -121,9 +121,9 @@ export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
           </div>
         </div>
 
-        <div className="h-64 w-full">
+        <div className="h-64 w-full outline-none focus:outline-none">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={pnlData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+            <BarChart style={{ outline: 'none' }} tabIndex={-1} data={pnlData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
               <XAxis 
                 dataKey="name" 
