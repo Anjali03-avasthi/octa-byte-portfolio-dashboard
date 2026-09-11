@@ -8,6 +8,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', service: 'octa-byte-portfolio-backend' });
+});
+
 app.get('/api/portfolio', (req, res) => {
   try {
     const holdings = seedData.map((stock) => {
