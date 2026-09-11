@@ -8,22 +8,50 @@ const cache = new Map();
 const CACHE_TTL_MS = 30 * 1000;
 
 async function fetchYahooCMP(yahooTicker) {
+  // First try yahoo-finance2 with a maximum wait time
   try {
-    const quote = await yahooFinance.quote(yahooTicker);
+    const quotePromise = yahooFinance.quote(yahooTicker);
+
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => {
+        reject(new Error('Yahoo Finance request timed out'));
+      }, 5000);
+    });
+
+    const quote = await Promise.race([
+      quotePromise,
+      timeoutPromise
+    ]);
+
     if (quote && typeof quote.regularMarketPrice === 'number') {
       return quote.regularMarketPrice;
     }
   } catch (err) {
-    try {
-      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooTicker)}?interval=1d&range=1d`;
-      const res = await axios.get(url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-        timeout: 4000
-      });
-      const price = res.data?.chart?.result?.[0]?.meta?.regularMarketPrice;
-      if (typeof price === 'number') return price;
-    } catch (e) {}
+    console.log(`Yahoo quote failed for ${yahooTicker}:`, err.message);
   }
+
+  // Fallback to Yahoo chart API
+  try {
+    const url =
+      `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooTicker)}?interval=1d&range=1d`;
+
+    const res = await axios.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0'
+      },
+      timeout: 5000
+    });
+
+    const price =
+      res.data?.chart?.result?.[0]?.meta?.regularMarketPrice;
+
+    if (typeof price === 'number') {
+      return price;
+    }
+  } catch (err) {
+    console.log(`Yahoo chart fallback failed for ${yahooTicker}:`, err.message);
+  }
+
   return null;
 }
 
