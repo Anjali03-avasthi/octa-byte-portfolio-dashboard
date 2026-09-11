@@ -21,12 +21,12 @@ interface ChartsProps {
 }
 
 const SECTOR_COLORS = [
-  '#2563eb', // Blue
-  '#7c3aed', // Violet
-  '#059669', // Emerald
-  '#d97706', // Amber
-  '#dc2626', // Red
-  '#0891b2'  // Cyan
+  '#2563eb',
+  '#7c3aed',
+  '#059669',
+  '#d97706',
+  '#dc2626',
+  '#0891b2'
 ];
 
 export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
@@ -44,7 +44,6 @@ export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Sector Allocation Donut - White Card */}
       <div className="bg-white border border-slate-200/90 rounded-xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -95,7 +94,6 @@ export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
           </ResponsiveContainer>
         </div>
 
-        {/* Legend */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-3 border-t border-slate-100 mt-2">
           {allocationData.map((item, index) => (
             <div key={item.name} className="flex items-center gap-2 text-xs">
@@ -112,7 +110,6 @@ export const PortfolioCharts: React.FC<ChartsProps> = ({ sectorSummaries }) => {
         </div>
       </div>
 
-      {/* Sector Gain / Loss Bar Chart - White Card */}
       <div className="bg-white border border-slate-200/90 rounded-xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div>

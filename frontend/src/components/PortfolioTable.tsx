@@ -28,8 +28,7 @@ const columnHelper = createColumnHelper<StockHolding>();
 
 export const PortfolioTable: React.FC<TableProps> = ({
   data,
-  sectorSummaries,
-  isRefreshing
+  sectorSummaries
 }) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
@@ -146,7 +145,7 @@ export const PortfolioTable: React.FC<TableProps> = ({
               >
                 {formatCurrency(info.getValue())}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Live Yahoo Quote" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             </div>
           );
         }
@@ -214,9 +213,7 @@ export const PortfolioTable: React.FC<TableProps> = ({
 
   return (
     <div className="space-y-4">
-      {/* Table Action Bar in White */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200/90 shadow-sm">
-        {/* Search */}
         <div className="relative flex-1 max-w-sm">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
@@ -228,7 +225,6 @@ export const PortfolioTable: React.FC<TableProps> = ({
           />
         </div>
 
-        {/* Sector Filter Chips */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
           <button
             onClick={() => setSelectedSector('ALL')}
@@ -256,7 +252,6 @@ export const PortfolioTable: React.FC<TableProps> = ({
         </div>
       </div>
 
-      {/* Sector Groups and Accordion Tables */}
       <div className="space-y-5">
         {groupedSectors.map(({ sector, stocks, summary }) => {
           const filteredStocks = stocks.filter(
@@ -276,7 +271,6 @@ export const PortfolioTable: React.FC<TableProps> = ({
               key={sector}
               className="bg-white border border-slate-200/90 rounded-xl overflow-hidden shadow-sm transition-all"
             >
-              {/* Sector Header / Summary Bar */}
               <div
                 onClick={() => toggleSector(sector)}
                 className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-slate-50/80 hover:bg-slate-100/70 cursor-pointer transition-colors border-b border-slate-200 gap-3"
@@ -304,7 +298,6 @@ export const PortfolioTable: React.FC<TableProps> = ({
                   </div>
                 </div>
 
-                {/* Sector Level Summaries in clean cards */}
                 {summary && (
                   <div className="grid grid-cols-3 gap-4 md:gap-8 items-center bg-white px-4 py-2.5 rounded-lg border border-slate-200 shadow-2xs self-stretch md:self-auto">
                     <div>
@@ -336,7 +329,6 @@ export const PortfolioTable: React.FC<TableProps> = ({
                 )}
               </div>
 
-              {/* Table Body (Collapsible) */}
               {!isCollapsed && (
                 <div className="overflow-x-auto">
                   <SectorSubTable
@@ -371,9 +363,7 @@ const SectorSubTable: React.FC<SectorSubTableProps> = ({
   const table = useReactTable({
     data: stocks,
     columns,
-    state: {
-      sorting
-    },
+    state: { sorting },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel()

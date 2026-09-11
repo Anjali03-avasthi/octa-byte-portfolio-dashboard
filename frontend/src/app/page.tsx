@@ -8,7 +8,6 @@ import { StockHolding, SectorSummary, PortfolioKPIs } from '@/types/portfolio';
 import { AlertCircle } from 'lucide-react';
 
 const REFRESH_INTERVAL_SECONDS = 15;
-// When running in full-stack setup, backend is at port 5000
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
   const [autoRefreshEnabled, setAutoRefreshEnabled] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
-  // 1. Fetch initial portfolio data from backend service
   const loadInitialPortfolio = async () => {
     try {
       setLoading(true);
@@ -40,7 +38,6 @@ export default function Home() {
     }
   };
 
-  // 2. Poll for live quotes from backend service
   const pollLiveUpdates = useCallback(async () => {
     if (isRefreshing) return;
     try {
@@ -171,7 +168,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Header & KPI Summary */}
         <DashboardHeader
           kpis={kpis}
           isRefreshing={isRefreshing}
@@ -181,10 +177,8 @@ export default function Home() {
           onToggleAutoRefresh={() => setAutoRefreshEnabled((prev) => !prev)}
         />
 
-        {/* Visual Analytics */}
         <PortfolioCharts sectorSummaries={sectorSummaries} />
 
-        {/* Detailed Holdings Table by Sector */}
         <section className="space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold tracking-tight text-slate-900">

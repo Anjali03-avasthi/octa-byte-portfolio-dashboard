@@ -8,8 +8,7 @@ import {
   DollarSign, 
   PieChart, 
   RefreshCw,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
 import { PortfolioKPIs } from '@/types/portfolio';
 import { formatCurrency, formatPercentage } from '@/lib/formatters';
@@ -35,7 +34,6 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
 
   return (
     <header className="space-y-6">
-      {/* Top Banner / Nav with Responsive Layout */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5">
         <div className="flex items-start sm:items-center gap-3">
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-slate-200 bg-white p-1.5 flex items-center justify-center shadow-xs flex-shrink-0 mt-0.5 sm:mt-0">
@@ -63,9 +61,7 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Live Controls & Polling Timer */}
         <div className="flex flex-wrap items-center gap-2 self-start md:self-auto pt-1 md:pt-0">
-          {/* Polling Timer indicator with dynamic auto width */}
           <div className="inline-flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-mono shadow-2xs">
             <Clock className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
             <span className="text-slate-500 text-[11px] sm:text-xs">Sync in:</span>
@@ -74,7 +70,6 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
             </span>
           </div>
 
-          {/* Toggle Auto Sync */}
           <button
             onClick={onToggleAutoRefresh}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all shadow-2xs ${
@@ -82,12 +77,10 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
                 ? 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300' 
                 : 'bg-amber-50 text-amber-700 border-amber-300 hover:bg-amber-100'
             }`}
-            title="Toggle 15-second automatic background polling"
           >
             {autoRefreshEnabled ? 'Pause Sync' : 'Resume Sync'}
           </button>
 
-          {/* Force Refresh Button */}
           <button
             onClick={onManualRefresh}
             disabled={isRefreshing}
@@ -99,9 +92,7 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* KPI Cards Grid - Crisp White with subtle borders and shadows */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Total Investment Card */}
         <div className="bg-white border border-slate-200/90 rounded-xl p-5 shadow-sm hover:shadow transition-all">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total Investment</span>
@@ -119,7 +110,6 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Current Portfolio Value */}
         <div className="bg-white border border-slate-200/90 rounded-xl p-5 shadow-sm hover:shadow transition-all">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Current Portfolio Value</span>
@@ -131,14 +121,12 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
             {formatCurrency(kpis.totalPresentValue)}
           </div>
           <div className="mt-2 flex items-center text-xs text-slate-500">
-            <span className="flex items-center gap-1 text-emerald-600 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              Live Yahoo & Google Engine
+            <span className="text-emerald-600 font-medium">
+              Live Equities Feed Connected
             </span>
           </div>
         </div>
 
-        {/* Total Net Gain / Loss */}
         <div className={`rounded-xl p-5 border shadow-sm hover:shadow transition-all ${
           isPositive 
             ? 'bg-emerald-50/50 border-emerald-200' 
@@ -175,7 +163,6 @@ export const DashboardHeader: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Top Performer Card */}
         <div className="bg-white border border-slate-200/90 rounded-xl p-5 shadow-sm hover:shadow transition-all">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Top Performer</span>

@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// 1. Initial portfolio endpoint
 app.get('/api/portfolio', (req, res) => {
   try {
     const holdings = seedData.map((stock) => {
@@ -37,7 +36,6 @@ app.get('/api/portfolio', (req, res) => {
   }
 });
 
-// 2. Live polling endpoint
 app.get('/api/stocks/live', async (req, res) => {
   try {
     const { ids } = req.query;
