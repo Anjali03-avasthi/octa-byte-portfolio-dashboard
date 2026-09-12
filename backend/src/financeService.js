@@ -8,7 +8,6 @@ const cache = new Map();
 const CACHE_TTL_MS = 30 * 1000;
 
 async function fetchYahooCMP(yahooTicker) {
-  // First try yahoo-finance2 with a maximum wait time
   try {
     const quotePromise = yahooFinance.quote(yahooTicker);
 
@@ -30,7 +29,6 @@ async function fetchYahooCMP(yahooTicker) {
     console.log(`Yahoo quote failed for ${yahooTicker}:`, err.message);
   }
 
-  // Fallback to Yahoo chart API
   try {
     const url =
       `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooTicker)}?interval=1d&range=1d`;

@@ -29,5 +29,4 @@ const TICKER_MAP = {
   "stock-28": { particulars: "Happiest Minds", exchangeCode: "543237", yahooTicker: "HAPPSTMNDS.NS", googleTicker: "HAPPSTMNDS:NSE" },
   "stock-29": { particulars: "Easemytrip", exchangeCode: "543272", yahooTicker: "EASEMYTRIP.NS", googleTicker: "EASEMYTRIP:NSE" }
 };
-
 module.exports = { TICKER_MAP };
